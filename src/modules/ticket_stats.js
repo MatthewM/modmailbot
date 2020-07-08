@@ -87,7 +87,7 @@ module.exports = function({ bot, knex, config, commands }) {
             msg.channel.createMessage('**closer** - Top 5 ticket closers \n**avgTickets** - Average tickets over all users \n**firstResponse** - The average first response time \n')
         }
     }
-    
+
     async function userStats(msg, args, thread) {
         let userId = args['userId'] || msg.member.user.id
         if (!userId) return;
@@ -164,10 +164,11 @@ module.exports = function({ bot, knex, config, commands }) {
         console.log(stats)
 
         /* Finished Output */
+        var interactions = stats[3] + stats[4] + stats[2];
         msg.channel.createMessage(
             `**Ticket Stats for ${user.username}**\n\n`
             + `\t**Closes**: ${stats[1]}\n` 
-            + `\t**Total Interactions**: ${stats[0]}\n`
+            + `\t**Total Interactions**: ${interactions}\n`
             + `\t**Total Public Replies**: ${stats[3]}\n`
             + `\t**Total Internal Comments**: ${stats[4]}\n`
             + `\t**Total Commands**: ${stats[2]}`
